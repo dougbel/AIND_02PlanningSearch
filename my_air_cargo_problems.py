@@ -1,3 +1,5 @@
+from scipy.constants.constants import carat
+
 from aimacode.logic import PropKB
 from aimacode.planning import Action
 from aimacode.search import (
@@ -289,16 +291,24 @@ class AirCargoProblem(Problem):
             '''
             unloads = []
 
-            # we have 18 concrete uload actions
-            # 3 different cargos *3 different airports * 2 diferent planes
+            # we have max 18 concrete upload actions
+            # 3 different cargo *3 different airports * 2 different planes
             # At(c, a) ∧ At(p, a) ∧ Cargo(c) ∧ Plane(p) ∧ Airport(a)
 
+            for cargo in self.cargos:
+                for airport in self.airports:
+                    for plane in self.planes:
+                        precond_pos = [expr("In({},{})".format(cargo, plane)), expr("At({},{})".format(plane,airport))]
+                        precond_neg = []
+                        effect_add = [expr("At({},{})".format(cargo, airport))]
+                        effect_rem = [expr("In({},{})".format(cargo, plane))]
 
-
-
-
-            # TODO create all Unload ground actions from the domain Unload action
+                        C1_P1_SFO = Action(expr("Unload(C1,P1,SFO)"),
+                                           [precond_pos, precond_neg],
+                                           [effect_add, effect_rem])
+                        unloads.append(C1_P1_SFO)
             return unloads
+
 
         def fly_actions():
             '''Create all concrete Fly actions and return a list
