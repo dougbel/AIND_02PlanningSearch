@@ -58,6 +58,227 @@ class AirCargoProblem(Problem):
             :return: list of Action objects
             '''
             loads = []
+
+            # we have 18 concrete load actions
+            # 3 different cargos *3 different airports * 2 diferent planes
+            # At(c, a) ∧ At(p, a) ∧ Cargo(c) ∧ Plane(p) ∧ Airport(a)
+
+            # C1 at SFO to load at P1
+            precond_pos = [expr("At(C1,SFO)"), expr("At(P1,SFO)"), expr("Cargo(C1)"), expr("Plane(P1)"),
+                           expr("Airport(SFO)")]
+            precond_neg = []
+            effect_add = [expr("In(C1,P1)")]
+            effect_rem = [expr("At(C1,SFO)")]
+
+            C1_SFO_P1 = Action(expr("Load(C1,SFO,P1)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C1_SFO_P1)
+
+            # C2 at SFO to load at P1
+            precond_pos = [expr("At(C2,SFO)"), expr("At(P1,SFO)"), expr("Cargo(C2)"), expr("Plane(P1)"),
+                           expr("Airport(SFO)")]
+            precond_neg = []
+            effect_add = [expr("In(C2,P1)")]
+            effect_rem = [expr("At(C2,SFO)")]
+
+            C2_SFO_P1 = Action(expr("Load(C2,SFO,P1)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C2_SFO_P1)
+
+            # C3 at SFO to load at P1
+            precond_pos = [expr("At(C3,SFO)"), expr("At(P1,SFO)"), expr("Cargo(C3)"), expr("Plane(P1)"),
+                           expr("Airport(SFO)")]
+            precond_neg = []
+            effect_add = [expr("In(C3,P1)")]
+            effect_rem = [expr("At(C3,SFO)")]
+
+            C3_SFO_P1 = Action(expr("Load(C3,SFO,P1)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C3_SFO_P1)
+
+            # C1 at SFO to load at P2
+            precond_pos = [expr("At(C1,SFO)"), expr("At(P2,SFO)"), expr("Cargo(C1)"), expr("Plane(P2)"),
+                           expr("Airport(SFO)")]
+            precond_neg = []
+            effect_add = [expr("In(C1,P2)")]
+            effect_rem = [expr("At(C1,SFO)")]
+
+            C1_SFO_P2 = Action(expr("Load(C1,SFO,P2)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C1_SFO_P2)
+
+            # C2 at SFO to load at P2
+            precond_pos = [expr("At(C2,SFO)"), expr("At(P2,SFO)"), expr("Cargo(C2)"), expr("Plane(P2)"),
+                           expr("Airport(SFO)")]
+            precond_neg = []
+            effect_add = [expr("In(C2,P2)")]
+            effect_rem = [expr("At(C2,SFO)")]
+
+            C2_SFO_P2 = Action(expr("Load(C2,SFO,P2)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C2_SFO_P2)
+
+            # C3 at SFO to load at P2
+            precond_pos = [expr("At(C3,SFO)"), expr("At(P2,SFO)"), expr("Cargo(C3)"), expr("Plane(P2)"),
+                           expr("Airport(SFO)")]
+            precond_neg = []
+            effect_add = [expr("In(C3,P2)")]
+            effect_rem = [expr("At(C3,SFO)")]
+
+            C3_SFO_P2 = Action(expr("Load(C3,SFO,P2)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C3_SFO_P2)
+
+            # C1 at JFK to load at P1
+            precond_pos = [expr("At(C1,JFK)"), expr("At(P1,JFK)"), expr("Cargo(C1)"), expr("Plane(P1)"),
+                           expr("Airport(JFK)")]
+            precond_neg = []
+            effect_add = [expr("In(C1,P1)")]
+            effect_rem = [expr("At(C1,JFK)")]
+
+            C1_JFK_P1 = Action(expr("Load(C1,JFK,P1)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C1_JFK_P1)
+
+            # C2 at JFK to load at P1
+            precond_pos = [expr("At(C2,JFK)"), expr("At(P1,JFK)"), expr("Cargo(C2)"), expr("Plane(P1)"),
+                           expr("Airport(JFK)")]
+            precond_neg = []
+            effect_add = [expr("In(C2,P1)")]
+            effect_rem = [expr("At(C2,JFK)")]
+
+            C2_JFK_P1 = Action(expr("Load(C2,JFK,P1)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C2_JFK_P1)
+
+            # C3 at JFK to load at P1
+            precond_pos = [expr("At(C3,JFK)"), expr("At(P1,JFK)"), expr("Cargo(C3)"), expr("Plane(P1)"),
+                           expr("Airport(JFK)")]
+            precond_neg = []
+            effect_add = [expr("In(C3,P1)")]
+            effect_rem = [expr("At(C3,JFK)")]
+
+            C3_JFK_P1 = Action(expr("Load(C3,JFK,P1)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C3_JFK_P1)
+
+            # C1 at JFK to load at P2
+            precond_pos = [expr("At(C1,JFK)"), expr("At(P2,JFK)"), expr("Cargo(C1)"), expr("Plane(P2)"),
+                           expr("Airport(JFK)")]
+            precond_neg = []
+            effect_add = [expr("In(C1,P2)")]
+            effect_rem = [expr("At(C1,JFK)")]
+
+            C1_JFK_P2 = Action(expr("Load(C1,JFK,P2)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C1_JFK_P2)
+
+            # C2 at JFK to load at P2
+            precond_pos = [expr("At(C2,JFK)"), expr("At(P2,JFK)"), expr("Cargo(C2)"), expr("Plane(P2)"),
+                           expr("Airport(JFK)")]
+            precond_neg = []
+            effect_add = [expr("In(C2,P2)")]
+            effect_rem = [expr("At(C2,JFK)")]
+
+            C2_JFK_P2 = Action(expr("Load(C2,JFK,P2)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C2_JFK_P2)
+
+            # C3 at JFK to load at P2
+            precond_pos = [expr("At(C3,JFK)"), expr("At(P2,JFK)"), expr("Cargo(C3)"), expr("Plane(P2)"),
+                           expr("Airport(JFK)")]
+            precond_neg = []
+            effect_add = [expr("In(C3,P2)")]
+            effect_rem = [expr("At(C3,JFK)")]
+
+            C3_JFK_P2 = Action(expr("Load(C3,JFK,P2)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C3_JFK_P2)
+
+            # C1 at ATL to load at P1
+            precond_pos = [expr("At(C1,ATL)"), expr("At(P1,ATL)"), expr("Cargo(C1)"), expr("Plane(P1)"),
+                           expr("Airport(ATL)")]
+            precond_neg = []
+            effect_add = [expr("In(C1,P1)")]
+            effect_rem = [expr("At(C1,ATL)")]
+
+            C1_ATL_P1 = Action(expr("Load(C1,ATL,P1)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C1_ATL_P1)
+
+            # C2 at ATL to load at P1
+            precond_pos = [expr("At(C2,ATL)"), expr("At(P1,ATL)"), expr("Cargo(C2)"), expr("Plane(P1)"),
+                           expr("Airport(ATL)")]
+            precond_neg = []
+            effect_add = [expr("In(C2,P1)")]
+            effect_rem = [expr("At(C2,ATL)")]
+
+            C2_ATL_P1 = Action(expr("Load(C2,ATL,P1)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C2_ATL_P1)
+
+            # C3 at ATL to load at P1
+            precond_pos = [expr("At(C3,ATL)"), expr("At(P1,ATL)"), expr("Cargo(C3)"), expr("Plane(P1)"),
+                           expr("Airport(ATL)")]
+            precond_neg = []
+            effect_add = [expr("In(C3,P1)")]
+            effect_rem = [expr("At(C3,ATL)")]
+
+            C3_ATL_P1 = Action(expr("Load(C3,ATL,P1)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C3_ATL_P1)
+
+            # C1 at ATL to load at P2
+            precond_pos = [expr("At(C1,ATL)"), expr("At(P2,ATL)"), expr("Cargo(C1)"), expr("Plane(P2)"),
+                           expr("Airport(ATL)")]
+            precond_neg = []
+            effect_add = [expr("In(C1,P2)")]
+            effect_rem = [expr("At(C1,ATL)")]
+
+            C1_ATL_P2 = Action(expr("Load(C1,ATL,P2)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C1_ATL_P2)
+
+            # C2 at ATL to load at P2
+            precond_pos = [expr("At(C2,ATL)"), expr("At(P2,ATL)"), expr("Cargo(C2)"), expr("Plane(P2)"),
+                           expr("Airport(ATL)")]
+            precond_neg = []
+            effect_add = [expr("In(C2,P2)")]
+            effect_rem = [expr("At(C2,ATL)")]
+
+            C2_ATL_P2 = Action(expr("Load(C2,ATL,P2)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C2_ATL_P2)
+
+            # C3 at ATL to load at P2
+            precond_pos = [expr("At(C3,ATL)"), expr("At(P2,ATL)"), expr("Cargo(C3)"), expr("Plane(P2)"),
+                           expr("Airport(ATL)")]
+            precond_neg = []
+            effect_add = [expr("In(C3,P2)")]
+            effect_rem = [expr("At(C3,ATL)")]
+
+            C3_ATL_P2 = Action(expr("Load(C3,ATL,P2)"),
+                               [precond_pos, precond_neg],
+                               [effect_add, effect_rem])
+            loads.append(C3_ATL_P2)
+
             # TODO create all load ground actions from the domain Load action
             return loads
 
@@ -67,6 +288,15 @@ class AirCargoProblem(Problem):
             :return: list of Action objects
             '''
             unloads = []
+
+            # we have 18 concrete uload actions
+            # 3 different cargos *3 different airports * 2 diferent planes
+            # At(c, a) ∧ At(p, a) ∧ Cargo(c) ∧ Plane(p) ∧ Airport(a)
+
+
+
+
+
             # TODO create all Unload ground actions from the domain Unload action
             return unloads
 
