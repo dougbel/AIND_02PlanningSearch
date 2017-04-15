@@ -305,12 +305,41 @@ class PlanningGraph():
             adds A nodes to the current level in self.a_levels[level]
         '''
         # TODO add action A level to the planning graph as described in the Russell-Norvig text
+
+
         # 1. determine what actions to add and create those PgNode_a objects
+        self.a_levels.append(set())
+        # check if it is possible apply any action from the current state
+        for action in self.problem.actions_list:
+            is_possible = True
+            # first in every positive clause's preconditions in set of states
+            for clause in action.precond_pos:
+                print ("clause pos")
+                pre_pos = PgNode_s(clause, True)
+                if pre_pos not in self.s_levels[level]:
+                    is_possible = False  # if something fails then this actions is not possible
+
+            # after check every negative clause's preconditions in set of states
+            for clause in action.precond_neg:
+                print("clause neg")
+                pre_pos = PgNode_s(clause, False)
+                if pre_pos not in self.s_levels[level]:
+                    is_possible = False  # if something fails then this actions is not possible
+
+            if is_possible:
+                # possible_actions.append(action)
+                print("possible action")
+                self.a_levels[level].add(PgNode_a(action))
+
         # 2. connect the nodes to the previous S literal level
         # for example, the A0 level will iterate through all possible actions for the problem and add a PgNode_a to a_levels[0]
         #   set iff all prerequisite literals for the action hold in S0.  This can be accomplished by testing
         #   to see if a proposed PgNode_a has prenodes that are a subset of the previous S level.  Once an
         #   action node is added, it MUST be connected to the S node instances in the appropriate s_level set.
+        # iterate in every state in
+
+
+
 
     def add_literal_level(self, level):
         ''' add an S (literal) level to the Planning Graph
